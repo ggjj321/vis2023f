@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML表格示例</title>
+</head>
+<body>
+
+<table border="1" id="myTable">
+  <tr>
+    <th>序號</th>
+    <th>班級</th>
+    <th>學號</th>
+    <th>姓名</th>
+    <th>Github 帳號</th>
+    <th>作業ㄧ</th>
+    <th>作業二</th>
+    <th>作業三</th>
+    <th>作業四</th>
+    <th>作業五</th>
+    <th>作業六</th>
+    <th>作業七</th>
+    <th>作業八</th>
+    <th>作業九</th>
+    <th>作業十</th>
+  </tr>
+  <button id = "donwloadCSV">donwload CSV</button>
+
+
+  <script>
+    const chineseNameGenerataor = () => {
+        const surnames = ["趙", "錢", "孫", "李", "周", "吳", "鄭", "王", "馮", "陳", "褚", "衛", "蔣", "沈", "韓", "楊", "朱", "秦", "尤", "許", "何", "呂", "施", "張", "孔", "曹", "嚴", "華", "金", "魏", "陶", "姜", "戚", "謝", "鄒", "喻", "柏", "水", "竇", "章", "雲", "蘇", "潘", "葛", "奚", "範", "彭", "郎", "魯", "韋", "昌"];
+
+        const givenNames = ["雨萱", "彥紅", "文娟", "宇辰", "浩文", "雨璇", "博文", "文靜", "欣悅", "瑞雪", "梓洋", "曉梅", "佳佳", "建軍", "曉麗", "歡歡", "曉軍", "歡歡", "梓妍", "婷婷", "偉傑", "小紅", "美美", "婷婷", "志強", "豔麗", "娟娟", "磊磊", "曉娟", "靜靜", "洋洋", "美麗", "明傑", "亮亮", "曉霞", "美麗", "文濤", "小傑", "敏敏", "文靜", "秀芳", "軍軍", "燕燕", "曉明", "洋洋", "華娟", "明明", "凱凱", "美麗"];
+
+        let randomSurname = surnames[Math.floor(Math.random() * surnames.length)];
+        let randomGivenName = givenNames[Math.floor(Math.random() * givenNames.length)];
+        return randomSurname + randomGivenName;
+    }
+
+    const generateRandomId = () => {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let randomId = '';
+        for (let i = 0; i < 10; i++) {
+            const randomIndex = Math.floor(Math.random() * characters.length);
+            randomId += characters[randomIndex];
+        }
+        return randomId;
+    }
+
+    var table = document.getElementById("myTable");
+
+    let stuentYearSplit = randomNumber = Math.floor(Math.random() * 120) + 1;
+
+    let numOf111Student = stuentYearSplit;
+    let numOf112Student = 120 - numOf111Student;
+
+    let numOf111590 = Math.floor(Math.random() * numOf111Student);
+    let numOf111598 = Math.floor(Math.random() * (numOf111Student - numOf111590));
+    let numOf111c52 = Math.floor(Math.random() * (numOf111Student - numOf111590 - numOf111598));
+    let numOf111c53 = Math.floor(Math.random() * (numOf111Student - numOf111590 - numOf111598 - numOf111c52));
+    let numOf111c71 = numOf111Student - numOf111590 - numOf111598 - numOf111c52 - numOf111c53;
+
+    let numOf112590 = Math.floor(Math.random() * numOf112Student);
+    let numOf112598 = Math.floor(Math.random() * (numOf112Student - numOf112590));
+    let numOf112c52 = Math.floor(Math.random() * (numOf112Student - numOf112590 - numOf112598));
+    let numOf112c53 = Math.floor(Math.random() * (numOf112Student - numOf112590 - numOf112598 - numOf112c52));
+    let numOf112c71 = numOf112Student - numOf112590 - numOf112598 - numOf112c52 - numOf112c53;
+
+    let studentNumList = [numOf111590, numOf111598, numOf111c52, numOf111c53, numOf111c71, numOf112590, numOf112598, numOf112c52, numOf112c53, numOf112c71];
+    let nowStudentClass = 0;
+    let nowStudentId = 1;
+
+    var allNeedDownloadData = [];
+
+    let topInformation = ["序號", "班級", "學號", "姓名", "GitHub 帳號", "作業ㄧ", "作業二", "作業三", "作業四", "作業五", "作業六", "作業七", "作業八", "作業九", "作業十"]
+
+    for (let i = 1; i <= 120; i++){
+        let newRowData = [];
+        let row = table.insertRow(i);
+        let cellIndex = row.insertCell(0);
+
+        cellIndex.innerHTML = String(i);
+        newRowData.push(String(i))
+
+        while (studentNumList[nowStudentClass] <= 0) {
+            nowStudentClass++;
+            nowStudentId = 1;
+        }
+        
+        let cellClass = row.insertCell(1);
+        let cellStudentId = row.insertCell(2);
+
+        switch (nowStudentClass) {
+            case 0:
+                cellClass.innerHTML = "資工二";
+                cellStudentId.innerHTML = "111590";
+                break;
+            case 1:
+                cellClass.innerHTML = "資工碩二";
+                cellStudentId.innerHTML = "111598";
+                break;
+            case 2:
+                cellClass.innerHTML = "電資AI碩二";
+                cellStudentId.innerHTML = "111C52";
+                break;
+            case 3:
+                cellClass.innerHTML = "電資資安碩二";
+                cellStudentId.innerHTML = "111C53";
+                break;
+            case 4:
+                cellClass.innerHTML = "創新AI碩二";
+                cellStudentId.innerHTML = "111C71";
+                break;
+            case 5:
+                cellClass.innerHTML = "資工一";
+                cellStudentId.innerHTML = "112590";
+                break;
+            case 6:
+                cellClass.innerHTML = "資工碩ㄧ";
+                cellStudentId.innerHTML = "112598";
+                break;
+            case 7:
+                cellClass.innerHTML = "電資AI碩ㄧ";
+                cellStudentId.innerHTML = "112C52";
+                break;
+            case 8:
+                cellClass.innerHTML = "電資資安碩ㄧ";
+                cellStudentId.innerHTML = "112C53";
+                break;
+            case 9:
+                cellClass.innerHTML = "創新AI碩ㄧ";
+                cellStudentId.innerHTML = "112C71";
+                break;
+        }
+
+        if (nowStudentId < 10) cellStudentId.innerHTML += "00" + String(nowStudentId);
+        else if  (nowStudentId < 100) cellStudentId.innerHTML += "0" + String(nowStudentId);
+        else if (nowStudentId < 1000) cellStudentId.innerHTML += String(nowStudentId);
+
+        nowStudentId += 1;
+        studentNumList[nowStudentClass] -= 1;
+
+        newRowData.push(cellClass.innerHTML);
+        newRowData.push(cellStudentId.innerHTML);
+
+        let cellName = row.insertCell(3);
+        cellName.innerHTML = chineseNameGenerataor();
+        newRowData.push(cellName.innerHTML);
+
+        let cellGitHubId = row.insertCell(4);
+        cellGitHubId.innerHTML = generateRandomId();
+        newRowData.push(cellGitHubId.innerHTML);
+
+
+        for (let scoreCellId = 5; scoreCellId <= 14; scoreCellId++) {
+            let scoreCell = row.insertCell(scoreCellId);
+            scoreCell.innerHTML = Math.floor(Math.random() * 10) + 1;
+            newRowData.push(scoreCell.innerHTML);
+        }
+        allNeedDownloadData.push(newRowData);
+
+    }
+
+    function convertToCSV(arr) {
+    var csv = arr.map(function (row) {
+            return row.join(',');
+        }).join('\n');
+        return csv;
+    }
+
+    var csv = convertToCSV(allNeedDownloadData);
+    var blob = new Blob([csv], { type: 'text/csv' });
+
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'data.csv';
+    a.style.display = 'none';
+
+    let downloadButton = document.getElementById("donwloadCSV");
+    downloadButton.addEventListener('click', function () {
+        a.click();
+    });
+
+    console.log(allNeedDownloadData);
+
+  </script>
+
+</table>
+
+</body>
+</html>

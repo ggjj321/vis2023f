@@ -6,11 +6,10 @@
     <meta charset="utf-8">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        /* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&display=swap'); */
 
         @font-face {
-            font-family:'CircleFont'; /* src: url(https://circle472.github.io/ct2022s/hw04/CircleFont.ttf);  https://github.com/circle472/ct2022s/ */
-            src: url(CircleFont_v2.woff2); /* https://cloudconvert.com/ttf-to-woff2 */
+            font-family:'CircleFont'; 
+            src: url(CircleFont_v2.woff2); 
         }
 
         h3 {
@@ -174,13 +173,8 @@
             .attr("width",  function(d, i) { return (i + 1) * 60; })
             .attr("height", function(d, i) { return (i + 1) * 60; });
 
-
-    d3.text("./csv/data.csv", function (data) {
-
-        //var parsedCSV = d3.csv.parseRows(data);
-        parsedCSV = d3.csv.parseRows(data);
-        //console.log(parsedCSV);
-
+    d3.text("./csv/data.csv").then(function(data) {
+        parsedCSV = d3.csvParseRows(data);
         var container = d3.select("#div2")
             .append("table")
             .selectAll("tr")
@@ -230,9 +224,9 @@
                     return "../apple/0.svg";
             })
             .attr("width", 50)
-            .attr("height", 50)
-            ;
+            .attr("height", 50);
     });
+
     </script>
 </body>
 

@@ -1,0 +1,14 @@
+{
+  "name": "d3f11dc8035ce38f",
+  "main": "d3f11dc8035ce38f@161.js",
+  "version": "161.0.0",
+  "homepage": "https://observablehq.com/d/d3f11dc8035ce38f",
+  "author": {
+    "name": "ggjj321's Workspace",
+    "url": "https://observablehq.com/@ggjj321-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
